@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <script defer src="script.js" type="module"></script>
+  </head>
+  <body>
+
+
+    <!-- PLUGIN COMPONENT -->
+    <div id="SH__window">
+      <!-- Plugin header -->
+      <header id="SH__header">
+        <h2 class="heading-primary" style="color:#afdaff; font-weight: 600;">Shipstation Helper</h2>
+        <p class="text-primary text-mute" style="font-size:0.9rem;">By: William J. Horn</p>
+      </header>
+
+      <!-- Central content of plugin -->
+      <div style="padding-inline:2rem;">
+
+        <div style="display:flex; justify-content:center; margin-bottom:1rem;">
+          <button id="calculate" style="all:unset; background-color:#1c9563; font-size:1rem; color:white; padding:5px; border-radius:3px;">Calculate</button>
+        </div>
+
+        <!-- order data main container -->
+        <div id="SH__order-data-container">
+
+          <!-- data section #1 -->
+          <div>
+            <h2 class="heading-primary text-left" style="margin-bottom:0.7rem;">Quantities:</h2>
+            <p class="text-primary info-item text-left">Jar Cases: <span id="jar-cases" class="quantity-value">5</span></p>
+            <p class="text-primary info-item text-left">Mini Cases: <span id="mini-cases" class="quantity-value">3.5</span></p>
+            <p class="text-primary info-item text-left">Bar Cases: <span id="bar-cases" class="quantity-value">7</span></p>
+          </div>
+
+          <!-- data section #2 -->
+          <div>
+            <h2 class="heading-primary text-left" style="margin-bottom:0.7rem;">Costs:</h2>
+            <p class="text-primary info-item text-left">Shipping Cost: <span id="shipping-cost" class="dollar-value">$12.50</span></p>
+            <p class="text-primary info-item text-left">Handling Cost: <span id="handling-cost" class="dollar-value">$3.00</span></p>
+            <p class="text-primary info-item text-left">Total Cost: <span id="total-cost" class="dollar-value">$15.50</span></p>
+          </div>
+
+          <!-- data section #3 -->
+          <div>
+            <h2 class="heading-primary text-left" style="margin-bottom:0.7rem;">Weight & Config:</h2>
+            <p class="text-primary info-item text-left">Total Weight: <span id="total-weight" class="weight-value">56.6 lb</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <script src="script.js"></script> -->
+  </body>
+</html>

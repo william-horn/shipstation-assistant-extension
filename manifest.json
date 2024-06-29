@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "ShipstationHelper",
+  "description": "Help with Shipstation",
+  "author": "William J. Horn",
+  "version": "1.0.0",
+
+  "action": {
+    "default_popup": "./src/popup/index.html",
+    "default_title": "Shipstation Helper"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["./build/content.js"]
+    }
+  ],
+
+  "background": {
+    "service_worker": "./src/background/background.js"
+  },
+
+  "permissions": [
+    "tabs",
+    "webNavigation",
+    "storage",
+    "scripting",
+    "activeTab"
+  ]
+}

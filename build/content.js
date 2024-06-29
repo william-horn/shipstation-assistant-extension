@@ -1,0 +1,1 @@
+(()=>{"use strict";chrome.runtime.onMessage.addListener(((a,e,s)=>{s("parseOrder"===a.request?{status:200,payload:{products:{Jar:{},Bar:{},Mini:{}},shippingRate:4.6,weight:9.4}}:{status:200,payload:"Not Available"})}))})();
