@@ -68,4 +68,33 @@ module.exports = {
 > **Note**: `mode` must be set to `'production'`, otherwise the browser will throw an EvalError (something to do with CORS).
 - Begin file structuring and go from there!
 
+## sendMessage API
+
+### `popup.js` to `content.js`
+
+For sending a message from a popup script to a content script, only the code below is required:
+
+```js
+// in popup.js
+(async () => {
+  // get the current tab
+  const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
+
+  // await a response
+  const response = await chrome.tabs.sendMessage(tab.id, { 
+    request: 'someRequest'
+  });
+})();
+```
+
+inside the `content.js`:
+
+```js
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  console.log('got message: ', message);
+
+  // send a response back
+  sendResponse({ status: 200 });
+});
+```
 
