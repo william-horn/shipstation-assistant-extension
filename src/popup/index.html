@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./styles/globals.css">
+    <link rel="stylesheet" href="./styles/components.css">
+    <link rel="stylesheet" href="./styles/utility.css">
+
     <script defer src="script.js" type="module"></script>
   </head>
   <body>
@@ -12,47 +15,49 @@
 
     <!-- PLUGIN COMPONENT -->
     <div id="SH__window">
-      <!-- Plugin header -->
-      <header id="SH__header">
-        <h2 class="heading-primary" style="color:#afdaff; font-weight: 600;">Shipstation Helper</h2>
-        <p class="text-primary text-mute" style="font-size:0.9rem;">By: William J. Horn</p>
+
+      <!-- Toolbar -->
+      <div id="SH__toolbar"></div>
+
+      <!-- Main header -->
+      <!-- padding set here to allow margins to stack -->
+      <!-- todo: maybe add these padding settings to the margin utility classes later on? -->
+      <header id="SH__header" class="m-col-3" style="padding-bottom:1px; padding-top:1px;">
+        <h1 
+        class="font-size-6 text-center" 
+        style="color:var(--text-color-title);"
+        >
+          Shipstation Assistant
+        </h1>
+        <p class="text-center italic text-mute">By: Willbur</p>
       </header>
 
-      <!-- Central content of plugin -->
-      <div style="padding-inline:2rem;">
+      <main id="SH__main" class="my-3">
+        <!-- Parse order button -->
+        <button id="process-order-btn" type="button" class="mb-6">Parse Order</button>
 
-        <div style="display:flex; justify-content:center; margin-bottom:1rem;">
-          <button id="calculate" style="all:unset; background-color:#1c9563; font-size:1rem; color:white; padding:5px; border-radius:3px;">Calculate</button>
+        <!-- Order title -->
+        <div class="mb-5">
+          <p class="font-size-5">Order:</p>
+          <p id="order-name" class="font-size-4 underline">"The Long Name Store"</p>
         </div>
 
-        <!-- order data main container -->
-        <div id="SH__order-data-container">
+        <!-- Outer content container -->
+        <div class="bg-primary-inset py-5">
 
-          <!-- data section #1 -->
-          <div>
-            <h2 class="heading-primary text-left" style="margin-bottom:0.7rem;">Quantities:</h2>
-            <p class="text-primary info-item text-left">Jar Cases: <span id="jar-cases" class="quantity-value">5</span></p>
-            <p class="text-primary info-item text-left">Mini Cases: <span id="mini-cases" class="quantity-value">3.5</span></p>
-            <p class="text-primary info-item text-left">Bar Cases: <span id="bar-cases" class="quantity-value">7</span></p>
-          </div>
-
-          <!-- data section #2 -->
-          <div>
-            <h2 class="heading-primary text-left" style="margin-bottom:0.7rem;">Costs:</h2>
-            <p class="text-primary info-item text-left">Shipping Cost: <span id="shipping-cost" class="dollar-value">$12.50</span></p>
-            <p class="text-primary info-item text-left">Handling Cost: <span id="handling-cost" class="dollar-value">$3.00</span></p>
-            <p class="text-primary info-item text-left">Total Cost: <span id="total-cost" class="dollar-value">$15.50</span></p>
-          </div>
-
-          <!-- data section #3 -->
-          <div>
-            <h2 class="heading-primary text-left" style="margin-bottom:0.7rem;">Weight & Config:</h2>
-            <p class="text-primary info-item text-left">Total Weight: <span id="total-weight" class="weight-value">56.6 lb</span></p>
+          <!-- Inner content container -->
+          <div id="SH__content" class="flex flex-col justify-center p-3">
+  
+            <div class="COMPONENT__order-category">
+              <p>Quantities:</p>
+              <div>
+  
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </main>
     </div>
 
-    <!-- <script src="script.js"></script> -->
   </body>
 </html>

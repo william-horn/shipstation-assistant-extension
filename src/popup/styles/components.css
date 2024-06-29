@@ -1,0 +1,52 @@
+
+
+#SH__window {
+  width: 225px;
+  height: 400px;
+  background-color: var(--bg-color-primary);
+}
+
+#SH__header {
+  /* background-color: var(--bg-color-secondary); */
+}
+
+#SH__main {
+
+}
+
+#SH__toolbar {
+  width: 100%;
+  height: 24px;
+  background-color: var(--bg-color-primary-inset);
+}
+
+#SH__content {
+  
+}
+
+#order-name {
+  color: #cbcd56;
+}
+
+#process-order-btn {
+  transition: all 0.2s;
+  background-color: #537937;
+  display: block;
+  margin-inline: auto;
+}
+
+#process-order-btn:hover {
+  background-color: #669344;
+}
+
+.COMPONENT__order-category {
+
+}
+
+.COMPONENT__order-category > p {
+  text-align: left;
+  font-weight: 600;
+  font-style: italic;
+  font-size: calc(var(--font-size-base)*1.25);
+  color: var(--text-color-mute);
+}

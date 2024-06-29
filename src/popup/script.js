@@ -1,25 +1,15 @@
-console.log('loaded popup script', chrome);
+// import UI from './lib/UI.js';
 
-// get HTML elements
-const jarCasesEl = document.getElementById('jar-cases');
-const barCasesEl = document.getElementById('bar-cases');
-const miniCasesEl = document.getElementById('mini-cases');
+// UI.calculateBtn.addEventListener('click', async () => {
+//   const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
+//   const response = await chrome.tabs.sendMessage(tab.id, { 
+//     request: 'parseOrder'
+//   });
 
-const shippingCostEl = document.getElementById('shipping-cost');
-const handlingCostEl = document.getElementById('handling-cost');
-const totalCostEl = document.getElementById('total-cost');
+//   if (response.status !== 200) throw Error(response.payload);
 
-const calculateButtonEl = document.getElementById('calculate');
+//   const orderData = response.payload;
 
-calculateButtonEl.addEventListener('click', async () => {
-  const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
-  const response = await chrome.tabs.sendMessage(tab.id, { 
-    request: 'parseOrder'
-  });
-
-  if (response.status !== 200) throw Error(response.payload);
-
-  const orderData = response.payload;
-
-  console.log('order data: ', orderData);
-})
+//   console.log('order data: ', orderData);
+//   UI.jarCases.textContent = 'testingggg';
+// })

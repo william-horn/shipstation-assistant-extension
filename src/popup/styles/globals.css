@@ -1,0 +1,41 @@
+
+/* Universal settings */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: content-box;
+  font-family: monospace;
+}
+
+:root {
+  --space-multiplier: 0.2rem;
+  --font-multiplier: 0.2rem;
+
+  --bg-color-primary: #1b1b21;
+  --bg-color-primary-inset: #141418;
+
+  --text-color-title: #70eba1;
+  --text-color-normal: #e3e6e8;
+  --text-color-normal-pop: white;
+  --text-color-mute: #585963;
+
+  --btn-color-normal: black;
+
+  --font-size-base: 0.9rem;
+}
+
+h1, h2, h3, p {
+  color: var(--text-color-normal);
+  font-size: var(--font-size-base);
+  text-align: center;
+}
+
+button {
+  all: unset;
+  padding: 0.5rem;
+  color: var(--text-color-normal);
+  font-size: var(--font-size-base);
+  background-color: var(--btn-color-normal); 
+  cursor: pointer;
+}
+
