@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "ShipstationHelper",
+  "name": "shipstation-assistant",
   "description": "Help with Shipstation",
   "author": "William J. Horn",
   "version": "1.0.0",
