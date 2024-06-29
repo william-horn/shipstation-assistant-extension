@@ -8,6 +8,7 @@
 // export const totalCost = document.getElementById('total-cost');
 
 export const processOrderBtn = document.getElementById('process-order-btn');
+export const orderName = document.getElementById('order-name');
 
 export default {
   // jarCases,
@@ -16,5 +17,6 @@ export default {
   // shippingCost,
   // handlingCost,
   // totalCost,
+  orderName,
   processOrderBtn,
 }

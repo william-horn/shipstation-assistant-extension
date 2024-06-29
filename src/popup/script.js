@@ -11,4 +11,5 @@ UI.processOrderBtn.addEventListener('click', async () => {
   const orderData = response.payload;
 
   console.log('order data: ', orderData);
+  UI.orderName.textContent = orderData.shippingRate;
 })

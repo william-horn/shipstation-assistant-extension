@@ -22,6 +22,12 @@
   --btn-color-normal: black;
 
   --font-size-base: 0.9rem;
+
+  --bg-color-scroll-bar: #4d4d4d;
+  --bg-color-scroll-bar-hover: #4d4d4d;
+  --bg-color-scroll-bar-track: rgba(47, 47, 51, 0.7);
+
+  --scroll-bar-width: 8px;
 }
 
 h1, h2, h3, p {
@@ -39,3 +45,23 @@ button {
   cursor: pointer;
 }
 
+/* DEFAULT SCROLLBAR */
+::-webkit-scrollbar {
+  width: var(--scroll-bar-width);
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 10px var(--bg-color-scroll-bar-track); 
+  /* background-color: var(--bg-color-scroll-bar-track);  */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  /* background: #5f677e;  */
+  background: var(--bg-color-scroll-bar);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bg-color-scroll-bar); 
+}

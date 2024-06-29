@@ -4,6 +4,10 @@
   width: 225px;
   height: 400px;
   background-color: var(--bg-color-primary);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  position: relative;
 }
 
 #SH__header {
@@ -11,12 +15,23 @@
 }
 
 #SH__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
 
+#SH__content-frame {
+  width: 100%;
+  /* height: calc(100% - 2rem); */
+  height: 100%;
+  overflow-y: auto;
+  /* position: absolute; */
 }
 
 #SH__toolbar {
   width: 100%;
-  height: 24px;
+  min-height: 24px;
+  position: relative;
   background-color: var(--bg-color-primary-inset);
 }
 
@@ -40,13 +55,29 @@
 }
 
 .COMPONENT__order-category {
-
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
 }
 
 .COMPONENT__order-category > p {
   text-align: left;
-  font-weight: 600;
+  /* font-weight: 600; */
   font-style: italic;
   font-size: calc(var(--font-size-base)*1.25);
   color: var(--text-color-mute);
+  margin-bottom: 0.8rem;
+}
+
+.COMPONENT__order-category > div {
+  margin-left: 1.2rem;
+}
+
+.COMPONENT__order-category > div > p {
+  text-align: left;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.COMPONENT__order-category > div .quantity {
+  color: orange;
 }

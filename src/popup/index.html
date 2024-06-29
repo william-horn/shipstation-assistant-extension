@@ -32,28 +32,51 @@
         <p class="text-center italic text-mute">By: Willbur</p>
       </header>
 
-      <main id="SH__main" class="my-3">
+      <main id="SH__main" class="mt-3">
         <!-- Parse order button -->
-        <button id="process-order-btn" type="button" class="mb-6">Parse Order</button>
+        <div class="py-5" style="position:sticky; top:0; background-color:#20242b; box-shadow: 0 10px 10px #080a0c;">
+          <button id="process-order-btn" type="button" class="mb-6">Parse Order</button>
 
-        <!-- Order title -->
-        <div class="mb-5">
-          <p class="font-size-5">Order:</p>
-          <p id="order-name" class="font-size-4 underline">"The Long Name Store"</p>
+          <!-- Order title -->
+          <div>
+            <p class="font-size-5">Order:</p>
+            <p id="order-name" class="font-size-4 underline">"The Long Name Store"</p>
+          </div>
         </div>
 
         <!-- Outer content container -->
-        <div class="bg-primary-inset py-5">
+        <div id="SH__content-frame" class="bg-primary-inset py-5">
 
           <!-- Inner content container -->
           <div id="SH__content" class="flex flex-col justify-center p-3">
-  
+
             <div class="COMPONENT__order-category">
               <p>Quantities:</p>
               <div>
-  
+                <p>Jar Cases: <span class="quantity">3</span></p>
+                <p>Bar Cases: <span class="quantity">3</span></p>
+                <p>Mini Cases: <span class="quantity">3</span></p>
               </div>
             </div>
+
+            <div class="COMPONENT__order-category">
+              <p>Quantities:</p>
+              <div>
+                <p>Jar Cases: <span class="quantity">3</span></p>
+                <p>Bar Cases: <span class="quantity">3</span></p>
+                <p>Mini Cases: <span class="quantity">3</span></p>
+              </div>
+            </div>
+            
+            <div class="COMPONENT__order-category">
+              <p>Quantities:</p>
+              <div>
+                <p>Jar Cases: <span class="quantity">3</span></p>
+                <p>Bar Cases: <span class="quantity">3</span></p>
+                <p>Mini Cases: <span class="quantity">3</span></p>
+              </div>
+            </div>
+
           </div>
         </div>
       </main>
