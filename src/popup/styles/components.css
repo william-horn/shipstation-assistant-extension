@@ -2,7 +2,7 @@
 
 #SH__window {
   width: 225px;
-  height: 400px;
+  height: 450px;
   background-color: var(--bg-color-primary);
   display: flex;
   flex-direction: column;
@@ -80,4 +80,8 @@
 
 .COMPONENT__order-category > div .quantity {
   color: orange;
+}
+
+.COMPONENT__order-category > div .money {
+  color: #70cf69;
 }

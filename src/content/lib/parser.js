@@ -27,8 +27,9 @@ export const parseOrder = () => {
 
   // shipstation rate estimate element & rate value (shipping & handling)
   let shippingRateLabel = document.querySelector('.rate-amount-R6LSuka');
-  let shippingRate = 0;
+  let shippingCost = 0;
   let totalWeight = 0;
+  let totalHandling = 0;
 
   // if the first rate element doesn't exist, then the order has already been shipped
   if (!shippingRateLabel) {
@@ -40,10 +41,10 @@ export const parseOrder = () => {
 
   // use substring on existing rate value due to dollar sign in the string
   // for ex the textContent looks like: '$10.34'
-  shippingRate = Number(shippingRateLabel.textContent.substring(1));
+  shippingCost = Number(shippingRateLabel.textContent.substring(1));
 
-  if (isNaN(shippingRate)) {
-    shippingRate = 'Not Found';
+  if (isNaN(shippingCost)) {
+    shippingCost = 'Not Found';
   }
 
   // product list mapping product type to total quantity
@@ -113,21 +114,58 @@ export const parseOrder = () => {
     productQuant.handlingCost = productType.handlingCost*productQuant.caseAmount;
     productQuant.weight = productType.caseWeight*productQuant.caseAmount + productType.singleWeight*productQuant.remaining;
 
-    shippingRate += productQuant.handlingCost;
     totalWeight += productQuant.weight;
+    totalHandling += productQuant.handlingCost;
   };
 
   return {
     products,
-    shippingRate,
+    shippingCost,
     totalWeight,
+    totalHandling,
+    totalShipping: totalHandling + shippingCost,
   };
 };
 
 export const parseOrder__test = () => {
+  const orderNames = [
+    'Central Market - Huston',
+    'Etaly',
+    'Loco Pops',
+    'Farm to People',
+    'Ace Hardware'
+  ];
+
+  const shippingCost =  Math.floor(Math.random()*23);
+  const totalHandling = Math.floor(Math.random()*10);
+
   return {
-    products: { Jar: {}, Bar: {}, Mini: {}},
-    shippingRate: 4.6,
-    weight: 9.4
+    products: { 
+      Jar: {
+        caseAmount: Math.floor(Math.random()*21),
+        remaining: Math.floor(Math.random()*5),
+        handlingCost: Math.floor(Math.random()*45),
+        weight: Math.floor(Math.random()*97)
+      }, 
+      Bar: {
+        caseAmount: Math.floor(Math.random()*7),
+        remaining: Math.floor(Math.random()*2),
+        handlingCost: Math.floor(Math.random()*13),
+        weight: Math.floor(Math.random()*23)
+      }, 
+      Mini: {
+        caseAmount: Math.floor(Math.random()*10),
+        remaining: Math.floor(Math.random()*6),
+        handlingCost: Math.floor(Math.random()*27),
+        weight: Math.floor(Math.random()*45)
+      }
+    },
+
+    shippingCost,
+    totalHandling,
+    totalShipping: shippingCost + totalHandling,
+    totalWeight: Math.floor(Math.random()*103),
+
+    orderName: orderNames[Math.floor(Math.random()*(orderNames.length - 1))]
   }
 }
