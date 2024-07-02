@@ -1,5 +1,19 @@
+/*
+  @author: William J. Horn
+  @desc: Parsing rules for obtaining and processing raw webpage data.
+
+  Currently this plugin only supports orders that involve Bars, Jars, and Minis
+  for wholesale, which don't include sample products or bulk product.
+
+  todo:
+    - Fix issue with float rounding
+    - Add support for Bulks
+    - Add support for Sample products
+*/
+
 import { getNumberComponents } from './math.js';
 import ProductType from './ProductType.js';
+import { getPackingConfig } from './getPackingConfig.js';
 
 /*
   @function: getProductType()
@@ -23,7 +37,7 @@ export const parseOrder = () => {
   // outer HTML of shipstation order list
   const outerList = document.querySelector('.react-table-wrapper-uZ_76Y3');
   const innerList = outerList.querySelector('div[role="rowgroup"]');
-  const itemList = innerList.querySelectorAll('.react-table-body-row-icH4FVD'); // querySelectorAll for items array
+  const itemList = innerList.querySelectorAll('.react-table-body-row-icH4FVD'); 
 
   // shipstation rate estimate element & rate value (shipping & handling)
   let shippingRateLabel = document.querySelector('.rate-amount-R6LSuka');
@@ -109,6 +123,7 @@ export const parseOrder = () => {
     let quant = getNumberComponents(productQuant.original/productType.unit, productType.unit);
 
     //* note: handling cost currently does not account for remaining 6-pack mini jars
+    //* handling should be excluded for remaining SAMPLE product - but should be added for remaining non-sample products that sum to a case amount
     productQuant.caseAmount = quant.whole;
     productQuant.remaining = quant.remaining;
     productQuant.handlingCost = productType.handlingCost*productQuant.caseAmount;
@@ -124,6 +139,7 @@ export const parseOrder = () => {
     totalWeight,
     totalHandling,
     totalShipping: totalHandling + shippingCost,
+    orderName: 'N/A',
   };
 };
 
@@ -139,33 +155,36 @@ export const parseOrder__test = () => {
   const shippingCost =  Math.floor(Math.random()*23);
   const totalHandling = Math.floor(Math.random()*10);
 
-  return {
-    products: { 
-      Jar: {
-        caseAmount: Math.floor(Math.random()*21),
-        remaining: Math.floor(Math.random()*5),
-        handlingCost: Math.floor(Math.random()*45),
-        weight: Math.floor(Math.random()*97)
-      }, 
-      Bar: {
-        caseAmount: Math.floor(Math.random()*7),
-        remaining: Math.floor(Math.random()*2),
-        handlingCost: Math.floor(Math.random()*13),
-        weight: Math.floor(Math.random()*23)
-      }, 
-      Mini: {
-        caseAmount: Math.floor(Math.random()*10),
-        remaining: Math.floor(Math.random()*6),
-        handlingCost: Math.floor(Math.random()*27),
-        weight: Math.floor(Math.random()*45)
-      }
-    },
+  const products = { 
+    Jar: {
+      caseAmount: Math.floor(Math.random()*21),
+      remaining: Math.floor(Math.random()*5),
+      handlingCost: Math.floor(Math.random()*45),
+      weight: Math.floor(Math.random()*97)
+    }, 
+    Bar: {
+      caseAmount: Math.floor(Math.random()*7),
+      remaining: Math.floor(Math.random()*2),
+      handlingCost: Math.floor(Math.random()*13),
+      weight: Math.floor(Math.random()*23)
+    }, 
+    Mini: {
+      caseAmount: Math.floor(Math.random()*10),
+      remaining: Math.floor(Math.random()*6),
+      handlingCost: Math.floor(Math.random()*27),
+      weight: Math.floor(Math.random()*45)
+    }
+  }
 
+  return {
+    products,
     shippingCost,
     totalHandling,
     totalShipping: shippingCost + totalHandling,
     totalWeight: Math.floor(Math.random()*103),
 
-    orderName: orderNames[Math.floor(Math.random()*(orderNames.length - 1))]
+    orderName: orderNames[Math.floor(Math.random()*(orderNames.length - 1))],
+
+    // packingConfig: getPackingConfig(ProductType, products)
   }
 }
