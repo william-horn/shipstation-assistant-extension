@@ -5,7 +5,7 @@ const processMessageRequest = data => {
     case 'parseOrder':
       return { 
         status: 200,
-        payload: parseOrder__test() 
+        payload: parseOrder() 
       };
 
     default:
